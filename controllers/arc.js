@@ -10,7 +10,21 @@ const getArc = async (id) => {
     return arc
 }
 
+const updateArc = async (id, body) => {
+    const arcId = await Arc.find({ id: id })
+    const arc = await Arc.findByIdAndUpdate(
+        arcId,
+        {
+            title: body.title,
+            description: body.description
+        },
+        { new: true }
+    )
+    return arc
+}
+
 module.exports = {
     getAllArc,
-    getArc
+    getArc,
+    updateArc
 }

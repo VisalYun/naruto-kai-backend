@@ -17,7 +17,14 @@ router.get('/', asyncHandler(async (req, res) => {
 
 router.get('/:id', asyncHandler(async (req, res) => {
     const arc = await arcController.getArc(req.params.id)
-    res.status(200).json({ message: "Arcs Fetch Successfully", arcs: arc })
+    res.status(200).json({ message: "Arc Fetch Successfully", arcs: arc })
+}))
+
+// UPDATE
+
+router.put('/:id', asyncHandler(async (req, res) => {
+    const arc = await arcController.updateArc(req.params.id, req.body)
+    res.status(200).json({ message: "Arcs Updated Successfully", arcs: arc })
 }))
 
 module.exports = router
